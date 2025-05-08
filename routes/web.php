@@ -27,3 +27,9 @@ Route::post('/login', [LoginController::class, 'Login'])->name('logincheck');
 Route::get('/data', [LoginController::class, 'AllData'])->name('data.all');
 
 Route::post('/logout', [LoginController::class, 'Logout'])->name('logout');
+
+
+Route::get('/image/form', [SiteController::class, 'ShowImageForm'])->name('upload.image');
+Route::post('/image/store', [SiteController::class, 'ImageUpload'])->name('image.store');
+
+Route::get('/image/view', [SiteController::class, "ViewImage"])->name('view.image');

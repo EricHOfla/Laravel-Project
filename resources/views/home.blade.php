@@ -13,8 +13,8 @@
 
 
     <ul>
-        <li><a href="{{url('about')}}">About</a></li>
-        <li><a href="{{url('contact')}}">Contact</a></li>
+        <li><a href="{{Route('upload.image')}}">Upload Image</a></li>
+        <li><a href="{{Route('view.image')}}">Image</a></li>
         <li><a href="{{url('login')}}">Login</a></li>
         <li><a href="{{Route('select.data')}}">All Data</a></li>
     </ul>
