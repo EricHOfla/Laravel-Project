@@ -82,8 +82,20 @@ public function Login(Request $request){
 
  if(Auth::attempt($credition)){
     $request->session()->regenerate();
+    $user= Auth::user();
 
-    return redirect()->route('data.all')->with('login', 'Login success');
+    if($user->role=== 'admin'){
+      
+        return redirect()->route('data.all')->with('login', 'Login success');
+    }
+   if ($user->role=='manager') {
+    return view('managerdata');
+   } else {
+    return view('userdata');
+   }
+   
+
+    
  }
  return back()->withErrors([
     'username' => 'Invalid Credentials',

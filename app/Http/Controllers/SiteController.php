@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Product;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class SiteController extends Controller
 {
@@ -71,6 +73,31 @@ class SiteController extends Controller
      $image = Product::all();
      return view('ShowImage', compact('image'));
    }
+
+   public function UserRegister(){
+     return view('userform');
+   }
+
+    public function UserStore(Request $request){
+     $request->validate([
+          'name' =>'required|string',
+          'username' =>'required|string',
+          'email' =>'required|email|unique:users',
+          'role' =>'required|string',
+          'password' => 'required|string|min:6'
+     ]);
+  
+     User::create([
+          'name' =>$request->name,
+          'username' =>$request->username,
+          'email' =>$request->email,
+          'role' =>$request->role,
+          'password' =>Hash::make($request->password)
+     ]);
+
+     return redirect()->route('data.all')->with('Byakunze', 'User Registered Successfully');
+
+    }
 
    
 }

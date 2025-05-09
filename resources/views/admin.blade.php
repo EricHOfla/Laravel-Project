@@ -8,11 +8,17 @@
 
 </head>
 <body>
+    @if (session('Byakunze'))
+        <p class="text-success">{{session('Byakunze')}}</p>
+    @endif
     <h1 class="text-center">Welcome, {{Auth::user()->username}}</h1>
   <form action="{{Route('logout')}}" method="post" class="p-2">
+    <div class="d-flex ">
     @csrf
     <button class="btn btn-danger" type="submit">Logout</button>
   </form>
+  <a class="btn btn-success m-2" href="{{Route('user.register')}}">New User</a>
+  </div>
     <table border="" class="table">
         <tr>
             <th>ID</th>

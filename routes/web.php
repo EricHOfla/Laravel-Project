@@ -33,3 +33,7 @@ Route::get('/image/form', [SiteController::class, 'ShowImageForm'])->name('uploa
 Route::post('/image/store', [SiteController::class, 'ImageUpload'])->name('image.store');
 
 Route::get('/image/view', [SiteController::class, "ViewImage"])->name('view.image');
+
+Route::get('/user/register', [SiteController::class, 'UserRegister'])->name('user.register');
+
+Route::post('/user/post', [SiteController::class, 'UserStore'])->name('user.store');
